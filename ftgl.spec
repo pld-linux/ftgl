@@ -7,17 +7,16 @@ Epoch:		0
 License:	LGPL
 Group:		X11/Libraries
 # original URL (dead ATM): http://opengl.geek.nz/ftgl/%{name}-%{version}.tar.gz
-Source0:	ftp://ftp.pl.debian.org/pub/debian/pool/main/f/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:	ftp://ftp.pl.debian.org/pub/debian/pool/main/f/ftgl/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	3eabec9ad37371c4d139408c7ffd2429
 Patch0:		%{name}-Makefiles.patch
 URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
 BuildRequires:	OpenGL-devel
 BuildRequires:	automake
 BuildRequires:	doxygen
-BuildRequires:	freetype-devel
+BuildRequires:	freetype-devel >= 2.0.9
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		no_install_post_strip	1
 
 %description
 FTGL is a free, open source library to enable developers to use
@@ -44,14 +43,28 @@ je w formacie najbardziej wydajnym przy renderingu OpenGL.
 Summary:	OpenGL frontend to freetype2 - development files
 Summary(pl):	Nak³adka OpenGL na freetype2 - pliki dla programistów
 Group:		X11/Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-devel
-Requires:	freetype-devel
+Requires:	freetype-devel >= 2.0.9
+Requires:	libstdc++-devel
 
 %description devel
 OpenGL frontend to freetype2 - development files.
 
 %description devel -l pl
 Nak³adka OpenGL na freetype2 - pliki dla programistów.
+
+%package static
+Summary:	Static FTGL library
+Summary(pl):	Statyczna biblioteka FTGL
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static FTGL library.
+
+%description static -l pl
+Statyczna biblioteka FTGL.
 
 %prep
 %setup -q -n FTGL
@@ -60,21 +73,36 @@ Nak³adka OpenGL na freetype2 - pliki dla programistów.
 %build
 cd unix
 install /usr/share/automake/config.* .
-%configure
+%configure \
+	--enable-shared
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-devel-%{version}
 
 %{makeinstall} -C unix
+
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
+%files
+%defattr(644,root,root,755)
+%doc HISTORY.txt README.txt license.txt
+%attr(755,root,root) %{_libdir}/libftgl.so.*.*.*
+
 %files devel
 %defattr(644,root,root,755)
-%doc COPYING.txt HISTORY.txt README.txt $RPM_BUILD_ROOT%{_datadir}/doc/ftgl/*
+%doc unix/docs/html
+%attr(755,root,root) %{_libdir}/libftgl.so
+%{_libdir}/libftgl.la
 %{_includedir}/FTGL
-%{_libdir}/*
 %{_pkgconfigdir}/*.pc
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libftgl.a
