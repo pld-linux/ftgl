@@ -1,4 +1,4 @@
-Summary:	OpenGL frontend for freetype2
+Summary:	OpenGL frontend to freetype2
 Summary(pl):	£atwy dostêp do fontów z poziomu OpenGL
 Name:		ftgl
 Version:	2.1.2
@@ -32,14 +32,14 @@ OpenGL rendering.
 #%%description -l pl
 
 %package devel
-Summary:	OpenGL frontend for freetype2
+Summary:	OpenGL frontend to freetype2
 Group:		X11/Libraries
 Requires:	freetype-devel
 Requires:	OpenGL-devel
 Requires:	glut-devel
 
 %description devel
-OpenGL frontend for freetype2
+OpenGL frontend to freetype2
 
 %prep
 %setup -q -n FTGL
