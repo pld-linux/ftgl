@@ -8,7 +8,7 @@ License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.pl.debian.org/pub/debian/pool/main/f/%{name}/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	3eabec9ad37371c4d139408c7ffd2429
-Patch0:		%{name}-makefiles.patch
+Patch0:		%{name}-Makefiles.patch
 URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
 BuildRequires:	doxygen
 BuildRequires:	OpenGL-devel
