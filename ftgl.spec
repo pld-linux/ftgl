@@ -1,5 +1,5 @@
 Summary:	OpenGL frontend to freetype2
-Summary(pl):	£atwy dostêp do fontów z poziomu OpenGL
+Summary(pl):	Nak³adka OpenGL na freetype2 - ³atwy dostêp do fontów z poziomu OpenGL
 Name:		ftgl
 Version:	2.1.2
 Release:	1
@@ -10,11 +10,11 @@ Source0:	ftp://ftp.pl.debian.org/pub/debian/pool/main/f/%{name}/%{name}_%{versio
 # Source0-md5:	3eabec9ad37371c4d139408c7ffd2429
 Patch0:		%{name}-Makefiles.patch
 URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
+BuildRequires:	OpenGL-devel
 BuildRequires:	automake
 BuildRequires:	doxygen
-BuildRequires:	OpenGL-devel
-BuildRequires:	glut-devel
 BuildRequires:	freetype-devel
+BuildRequires:	glut-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -32,10 +32,11 @@ OpenGL rendering.
 #%%description -l pl
 
 %package devel
-Summary:	OpenGL frontend to freetype2
+Summary:	OpenGL frontend to freetype2 - development files
+Summary(pl):	Nak³adka OpenGL na freetype2 - pliki dla programistów
 Group:		X11/Libraries
-Requires:	freetype-devel
 Requires:	OpenGL-devel
+Requires:	freetype-devel
 Requires:	glut-devel
 
 %description devel
