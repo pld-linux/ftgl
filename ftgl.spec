@@ -14,7 +14,6 @@ BuildRequires:	OpenGL-devel
 BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	freetype-devel
-BuildRequires:	glut-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -37,7 +36,6 @@ Summary(pl):	Nak³adka OpenGL na freetype2 - pliki dla programistów
 Group:		X11/Libraries
 Requires:	OpenGL-devel
 Requires:	freetype-devel
-Requires:	glut-devel
 
 %description devel
 OpenGL frontend to freetype2
