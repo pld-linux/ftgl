@@ -1,5 +1,5 @@
 Summary:	OpenGL frontend for freetype2
-Summary(pl):	£atwy dostep do fontow z poziomu OpenGL
+Summary(pl):	£atwy dostêp do fontów z poziomu OpenGL
 Name:		ftgl
 Version:	2.1.2
 Release:	1
@@ -29,7 +29,7 @@ data into a lesser quality, proprietary format. FTGL uses the Freetype
 then takes that output and stores it in a format most efficient for
 OpenGL rendering.
 
-%description -l pl
+#%%description -l pl
 
 %package devel
 Summary:	OpenGL frontend for freetype2
