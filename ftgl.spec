@@ -10,6 +10,7 @@ Source0:	ftp://ftp.pl.debian.org/pub/debian/pool/main/f/%{name}/%{name}_%{versio
 # Source0-md5:	3eabec9ad37371c4d139408c7ffd2429
 Patch0:		%{name}-Makefiles.patch
 URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
+BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	OpenGL-devel
 BuildRequires:	glut-devel
@@ -46,22 +47,22 @@ OpenGL frontend for freetype2
 
 %build
 cd unix
+install %{_datadir}/automake/config.* .
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd unix
-%{makeinstall}
+install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-devel-%{version}
 
-mv $RPM_BUILD_ROOT%{_datadir}/doc/ftgl $RPM_BUILD_ROOT%{_docdir}/%{name}-devel-%{version}
+%{makeinstall} -C unix
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc COPYING.txt HISTORY.txt README.txt
+%doc COPYING.txt HISTORY.txt README.txt $RPM_BUILD_ROOT%{_datadir}/doc/ftgl/*
 %{_includedir}/FTGL
 %{_libdir}/*.*
 %{_pkgconfigdir}/*.pc
