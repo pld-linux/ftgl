@@ -76,5 +76,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING.txt HISTORY.txt README.txt $RPM_BUILD_ROOT%{_datadir}/doc/ftgl/*
 %{_includedir}/FTGL
-%{_libdir}/*.*
+%{_libdir}/*
 %{_pkgconfigdir}/*.pc
