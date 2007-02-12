@@ -1,5 +1,5 @@
 Summary:	OpenGL frontend to freetype2
-Summary(pl):	Nak≥adka OpenGL na freetype2 - ≥atwy dostÍp do fontÛw z poziomu OpenGL
+Summary(pl.UTF-8):   Nak≈Çadka OpenGL na freetype2 - ≈Çatwy dostƒôp do font√≥w z poziomu OpenGL
 Name:		ftgl
 Version:	2.1.2
 Release:	2
@@ -29,20 +29,20 @@ data into a lesser quality, proprietary format. FTGL uses the Freetype
 fonts. It then takes that output and stores it in a format most
 efficient for OpenGL rendering.
 
-%description -l pl
-FTPGL to wolnodostÍpna biblioteka z otwartymi ºrÛd≥ami umoøliwiaj±ca
-programistom uøywanie dowolnych fontÛw w aplikacjach OpenGL
-(http://www.opengl.org/). W przeciwieÒstwie do innych bibliotek OpenGL
-FTGL uøywa standardowych formatÛw plikÛw z fontami, dziÍki czemu nie
-jest wymagany øaden preprocessing, aby przetworzyÊ dane fontu wysokiej
-jako∂ci na w≥asno∂ciowy format niøszej jako∂ci. FTGL do wczytywania i
-dekodowania fontÛw uøywa biblioteki obs≥ugi fontÛw Freetype
-(http://www.freetype.org/), nastÍpnie przejmuje wyj∂cie i przechowuje
+%description -l pl.UTF-8
+FTPGL to wolnodostƒôpna biblioteka z otwartymi ≈∫r√≥d≈Çami umo≈ºliwiajƒÖca
+programistom u≈ºywanie dowolnych font√≥w w aplikacjach OpenGL
+(http://www.opengl.org/). W przeciwie≈Ñstwie do innych bibliotek OpenGL
+FTGL u≈ºywa standardowych format√≥w plik√≥w z fontami, dziƒôki czemu nie
+jest wymagany ≈ºaden preprocessing, aby przetworzyƒá dane fontu wysokiej
+jako≈õci na w≈Çasno≈õciowy format ni≈ºszej jako≈õci. FTGL do wczytywania i
+dekodowania font√≥w u≈ºywa biblioteki obs≈Çugi font√≥w Freetype
+(http://www.freetype.org/), nastƒôpnie przejmuje wyj≈õcie i przechowuje
 je w formacie najbardziej wydajnym przy renderingu OpenGL.
 
 %package devel
 Summary:	OpenGL frontend to freetype2 - development files
-Summary(pl):	Nak≥adka OpenGL na freetype2 - pliki dla programistÛw
+Summary(pl.UTF-8):   Nak≈Çadka OpenGL na freetype2 - pliki dla programist√≥w
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
@@ -52,19 +52,19 @@ Requires:	libstdc++-devel
 %description devel
 OpenGL frontend to freetype2 - development files.
 
-%description devel -l pl
-Nak≥adka OpenGL na freetype2 - pliki dla programistÛw.
+%description devel -l pl.UTF-8
+Nak≈Çadka OpenGL na freetype2 - pliki dla programist√≥w.
 
 %package static
 Summary:	Static FTGL library
-Summary(pl):	Statyczna biblioteka FTGL
+Summary(pl.UTF-8):   Statyczna biblioteka FTGL
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static FTGL library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka FTGL.
 
 %prep
