@@ -1,5 +1,5 @@
 Summary:	OpenGL frontend to freetype2
-Summary(pl.UTF-8):   Nakładka OpenGL na freetype2 - łatwy dostęp do fontów z poziomu OpenGL
+Summary(pl.UTF-8):	Nakładka OpenGL na freetype2 - łatwy dostęp do fontów z poziomu OpenGL
 Name:		ftgl
 Version:	2.1.2
 Release:	2
@@ -42,7 +42,7 @@ je w formacie najbardziej wydajnym przy renderingu OpenGL.
 
 %package devel
 Summary:	OpenGL frontend to freetype2 - development files
-Summary(pl.UTF-8):   Nakładka OpenGL na freetype2 - pliki dla programistów
+Summary(pl.UTF-8):	Nakładka OpenGL na freetype2 - pliki dla programistów
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
@@ -57,7 +57,7 @@ Nakładka OpenGL na freetype2 - pliki dla programistów.
 
 %package static
 Summary:	Static FTGL library
-Summary(pl.UTF-8):   Statyczna biblioteka FTGL
+Summary(pl.UTF-8):	Statyczna biblioteka FTGL
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
