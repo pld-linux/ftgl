@@ -21,6 +21,7 @@ BuildRequires:	freetype-devel >= 2.0.9
 BuildRequires:	ghostscript
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -75,6 +76,7 @@ Statyczna biblioteka FTGL.
 %prep
 %setup -q -n %{name}-%{version}~%{_rc}
 #%%patch0 -p1
+%{__sed} -i 's/\$(ECHO)/echo/' Makefile.am
 
 %build
 %{__libtoolize}
@@ -102,12 +104,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc HISTORY.txt README.txt license.txt
+%doc AUTHORS ChangeLog COPYING NEWS README docs/{*.dox,*.txt}
 %attr(755,root,root) %{_libdir}/libftgl.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc unix/docs/html
+%doc docs/html
 %attr(755,root,root) %{_libdir}/libftgl.so
 %{_libdir}/libftgl.la
 %{_includedir}/FTGL
