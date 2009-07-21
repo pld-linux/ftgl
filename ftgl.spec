@@ -1,22 +1,27 @@
+%define	_rc	rc5
 Summary:	OpenGL frontend to freetype2
 Summary(pl.UTF-8):	Nakładka OpenGL na freetype2 - łatwy dostęp do fontów z poziomu OpenGL
 Name:		ftgl
-Version:	2.1.2
-Release:	3
+Version:	2.1.3
+Release:	0.%{_rc}.1
 Epoch:		0
 License:	LGPL
 Group:		X11/Libraries
 # original URL (dead ATM): http://opengl.geek.nz/ftgl/%{name}-%{version}.tar.gz
-Source0:	ftp://ftp.pl.debian.org/pub/debian/pool/main/f/ftgl/%{name}_%{version}.orig.tar.gz
-# Source0-md5:	3eabec9ad37371c4d139408c7ffd2429
-Patch0:		%{name}-Makefiles.patch
-Patch1:		%{name}-gcc4.patch
+Source0:	http://dl.sourceforge.net/ftgl/%{name}-%{version}-%{_rc}.tar.bz2
+# Source0-md5:	c7879018cde844059495b3029b0b6503
+#Patch0:		%{name}-Makefiles.patch
 URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
 BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	OpenGL-devel
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	freetype-devel >= 2.0.9
+BuildRequires:	ghostscript
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -68,13 +73,15 @@ Static FTGL library.
 Statyczna biblioteka FTGL.
 
 %prep
-%setup -q -n FTGL
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{version}~%{_rc}
+#%%patch0 -p1
 
 %build
-cd unix
-install /usr/share/automake/config.* .
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--enable-shared
 %{__make}
@@ -82,7 +89,8 @@ install /usr/share/automake/config.* .
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{makeinstall} -C unix
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 
