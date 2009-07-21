@@ -7,7 +7,6 @@ Release:	0.%{_rc}.1
 Epoch:		0
 License:	LGPL
 Group:		X11/Libraries
-# original URL (dead ATM): http://opengl.geek.nz/ftgl/%{name}-%{version}.tar.gz
 Source0:	http://dl.sourceforge.net/ftgl/%{name}-%{version}-%{_rc}.tar.bz2
 # Source0-md5:	c7879018cde844059495b3029b0b6503
 #Patch0:		%{name}-Makefiles.patch
@@ -111,6 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/html
 %attr(755,root,root) %{_libdir}/libftgl.so
+%attr(755,root,root) %ghost %{_libdir}/libftgl.so.2
 %{_libdir}/libftgl.la
 %{_includedir}/FTGL
 %{_pkgconfigdir}/*.pc
