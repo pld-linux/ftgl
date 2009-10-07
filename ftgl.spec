@@ -99,10 +99,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS COPYING ChangeLog INSTALL NEWS README TODO
 %attr(755,root,root) %{_libdir}/libftgl.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libftgl.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%doc docs/html docs/latex/ftgl.pdf
+%doc docs/html
 %attr(755,root,root) %{_libdir}/libftgl.so
 %{_libdir}/libftgl.la
 %{_includedir}/FTGL
