@@ -4,19 +4,19 @@ Name:		ftgl
 Version:	2.1.3
 Release:	0.rc5.1
 Epoch:		0
-License:	LGPL
-Group:		X11/Libraries
+License:	MIT
+Group:		Libraries
 # original URL (dead ATM): http://opengl.geek.nz/ftgl/%{name}-%{version}.tar.gz
-Source0:	http://dl.sourceforge.net/ftgl/%{name}-%{version}-rc5.tar.gz
+Source0:	http://downloads.sourceforge.net/ftgl/%{name}-%{version}-rc5.tar.gz
 # Source0-md5:	fcf4d0567b7de9875d4e99a9f7423633
 URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
-BuildRequires:	OpenGL-GLU-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	OpenGL-GLU-devel >= 1.2
+BuildRequires:	autoconf >= 2.58
+BuildRequires:	automake >= 1.6
 BuildRequires:	doxygen
 BuildRequires:	freetype-devel >= 2.0.9
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,9 +43,9 @@ je w formacie najbardziej wydajnym przy renderingu OpenGL.
 %package devel
 Summary:	OpenGL frontend to freetype2 - development files
 Summary(pl.UTF-8):	Nakładka OpenGL na freetype2 - pliki dla programistów
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	OpenGL-GLU-devel
+Requires:	OpenGL-GLU-devel >= 1.2
 Requires:	freetype-devel >= 2.0.9
 Requires:	libstdc++-devel
 
@@ -58,7 +58,7 @@ Nakładka OpenGL na freetype2 - pliki dla programistów.
 %package static
 Summary:	Static FTGL library
 Summary(pl.UTF-8):	Statyczna biblioteka FTGL
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libftgl.so
 %{_libdir}/libftgl.la
 %{_includedir}/FTGL
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/ftgl.pc
 
 %files static
 %defattr(644,root,root,755)
