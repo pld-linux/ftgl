@@ -77,6 +77,7 @@ Statyczna biblioteka FTGL.
 %{__autoheader}
 %{__automake}
 %configure \
+	ac_cv_path_LATEX=no \
 	--enable-shared
 %{__make} \
 	ECHO=/bin/echo
