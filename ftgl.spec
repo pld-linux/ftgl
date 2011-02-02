@@ -17,6 +17,8 @@ BuildRequires:	doxygen
 BuildRequires:	freetype-devel >= 2.0.9
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	pkgconfig
+BuildRequires:	texlive-pdftex
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
