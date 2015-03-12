@@ -2,7 +2,7 @@ Summary:	OpenGL frontend to freetype2
 Summary(pl.UTF-8):	Nakładka OpenGL na freetype2 - łatwy dostęp do fontów z poziomu OpenGL
 Name:		ftgl
 Version:	2.1.3
-Release:	0.rc5.1
+Release:	0.rc5.2
 Epoch:		0
 License:	MIT
 Group:		Libraries
