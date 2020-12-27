@@ -1,24 +1,29 @@
 Summary:	OpenGL frontend to freetype2
 Summary(pl.UTF-8):	Nakładka OpenGL na freetype2 - łatwy dostęp do fontów z poziomu OpenGL
 Name:		ftgl
-Version:	2.1.3
-Release:	0.rc5.2
-Epoch:		0
+Version:	2.4.0
+Release:	1
 License:	MIT
 Group:		Libraries
-# original URL (dead ATM): http://opengl.geek.nz/ftgl/%{name}-%{version}.tar.gz
-Source0:	http://downloads.sourceforge.net/ftgl/%{name}-%{version}-rc5.tar.gz
-# Source0-md5:	fcf4d0567b7de9875d4e99a9f7423633
-URL:		http://homepages.paradise.net.nz/henryj/code/#FTGL
+#Source0Download: https://github.com/frankheckenbach/ftgl
+Source0:	https://github.com/frankheckenbach/ftgl/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	fba1e1c548ebe3ab362495e96a7a0670
+URL:		https://github.com/frankheckenbach/ftgl
 BuildRequires:	OpenGL-GLU-devel >= 1.2
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1.6
 BuildRequires:	doxygen
+# pkgconfig(freetype2) >= 9.0.3
 BuildRequires:	freetype-devel >= 2.0.9
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	texlive-pdftex
+# for tests
+#BuildRequires:	OpenGL-glut-devel
+#BuildRequires:	cppunit-devel
+#BuildRequires:	fonts-TTF-DejaVu
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -69,8 +74,20 @@ Static FTGL library.
 %description static -l pl.UTF-8
 Statyczna biblioteka FTGL.
 
+%package apidocs
+Summary:	API documentation for FTGL library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki FTGL
+Group:		Documentation
+%{?noarchpackage}
+
+%description apidocs
+API documentation for FTGL library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki FTGL.
+
 %prep
-%setup -q -n %{name}-%{version}~rc5
+%setup -q
 
 %build
 %{__libtoolize}
@@ -79,18 +96,24 @@ Statyczna biblioteka FTGL.
 %{__autoheader}
 %{__automake}
 %configure \
-	ac_cv_path_LATEX=no \
-	--enable-shared
+	ac_cv_path_LATEX=no
+#	--enable-shared
+
 %{__make} \
 	ECHO=/bin/echo
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	ECHO=/bin/echo
 
-rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
+# obsolted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libftgl.la
+
+# packaged as %doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -108,10 +131,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc docs/html
 %attr(755,root,root) %{_libdir}/libftgl.so
-%{_libdir}/libftgl.la
 %{_includedir}/FTGL
 %{_pkgconfigdir}/ftgl.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libftgl.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%doc docs/html/*
