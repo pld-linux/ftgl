@@ -78,7 +78,7 @@ Statyczna biblioteka FTGL.
 Summary:	API documentation for FTGL library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki FTGL
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 API documentation for FTGL library.
